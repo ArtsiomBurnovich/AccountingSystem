@@ -61,11 +61,11 @@ public class House {
                 price = new_price;
             }
             public void Print_Flat() {
-                System.out.println("Number of flat: " + number_of_flat +
-                        "\nCount of humans: " + count_of_humans +
-                        "\nCount of rooms: " + count_of_rooms +
-                        "\nSquare: " + square +
-                        "\nPrice: " + price);
+                System.out.println("          Number of flat: " + number_of_flat +
+                        "\n          Count of humans: " + count_of_humans +
+                        "\n          Count of rooms: " + count_of_rooms +
+                        "\n          Square: " + square +
+                        "\n          Price: " + price);
             }
         }
 
@@ -96,6 +96,21 @@ public class House {
             }
             return Array;
         }
+        public int Get_Count_Of_Humans_On_Floor(){
+            int sum = 0;
+            for (int i = 0; i < Get_count_of_flats_on_floor(); i++){
+                sum += flats_on_floor.get(i).count_of_humans;
+            }
+            return sum;
+        }
+        public int Get_Square_Of_Floor(){
+            int sum = 0;
+            for (int i = 0; i < Get_count_of_flats_on_floor(); i++)
+            {
+                sum += flats_on_floor.get(i).square;
+            }
+            return sum;
+        }
     }
 
     House(int new_number_of_house) {
@@ -114,11 +129,25 @@ public class House {
     public int Get_count_of_floors(){
         return count_of_floors;
     }
-    public int Get_number_of_floor(){
+    public int Get_number_of_house(){
         return number_of_house;
     }
     public void Set_number_of_house(int new_number){
         number_of_house = new_number;
+    }
+    public int Get_Count_Of_Humans(){
+        int sum = 0;
+        for (int i = 0; i < count_of_floors; i++){
+            sum += floors.get(i).Get_Count_Of_Humans_On_Floor();
+        }
+        return sum;
+    }
+    public int Get_Square(){
+        int sum = 0;
+        for (int i = 0; i < count_of_floors; i++){
+            sum += floors.get(i).Get_Square_Of_Floor();
+        }
+        return sum;
     }
 }
 

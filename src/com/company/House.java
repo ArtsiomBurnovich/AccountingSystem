@@ -195,7 +195,7 @@ public class House {
             int count_of_flats_on_the_floor = this.floors.get(i).Get_count_of_flats_on_floor();
             for (int j = 0; j < count_of_flats_on_the_floor; j++) {
                 this.atFloor(i).flats_on_floor.get(j).Print_Flat();
-                System.out.println("\n");
+                //System.out.println("\n");
             }
         }
     }

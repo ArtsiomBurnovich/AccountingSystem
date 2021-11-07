@@ -5,6 +5,7 @@ public class House {
     private int count_of_floors;
     private int count_of_flats;
     private int number_of_house;
+    public String name;
     private  ArrayList<Floor> floors = new ArrayList<>();
 
     public class Floor {
@@ -91,7 +92,6 @@ public class House {
         public void Add_flat() {
             count_of_flats++;
             flats_on_floor.add(new Flat(count_of_flats));
-
         }
 
         public int Get_count_of_flats_on_floor() {
@@ -140,6 +140,10 @@ public class House {
         }
     }
 
+    House(){
+        count_of_floors = 0;
+        count_of_flats = 0;
+    }
     House(int new_number_of_house) {
         count_of_floors = 0;
         count_of_flats = 0;
@@ -188,7 +192,7 @@ public class House {
     }
 
     public void printHouse() {
-        System.out.println("The House " + this.Get_number_of_house() + ":\n");
+        System.out.println("The " + name + " " + this.Get_number_of_house() + ":\n");
         int count_of_floors = this.Get_count_of_floors();
         for (int i = 0; i < count_of_floors; i++) {
             System.out.println("     Floor " + (i + 1) + " :\n");

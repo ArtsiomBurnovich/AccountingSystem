@@ -15,11 +15,25 @@ public class Main {
             command = in.nextLine();
             command = command.toLowerCase();
             command = command.replaceAll(" ", "");
-            //System.out.println(command);
+            System.out.println(command);
 
-            if (command.contains("buildhouse") || command.contains("build")) {
-                Houses.add(new House(count_of_houses + 1));
-                System.out.println("The House " + (count_of_houses + 1) + " without floors and flats was build!");
+            if (command.contains("buildhousewithparking") || command.contains("buildwithparking") || command.contains("buildwp")){
+                Houses.add(HouseFactory.getHouse((EnumHouses.PARKING)));
+                System.out.println("The " + Houses.get(count_of_houses).name + " " + (count_of_houses + 1) + " was build!");
+                count_of_houses++;
+                continue;
+            }
+
+            if (command.contains("buildhousewithhelocopterpalce") || command.contains("buildwithhelicopter") || command.contains("buildwh")){
+                Houses.add(HouseFactory.getHouse((EnumHouses.HELICOPTER)));
+                System.out.println("The " + Houses.get(count_of_houses).name + " " + (count_of_houses + 1) + " was build!");
+                count_of_houses++;
+                continue;
+            }
+
+            if (command.contains("buildhousewithelevator") || command.contains("buildwithelevator") || command.contains("buildwe")){
+                Houses.add(HouseFactory.getHouse((EnumHouses.ELEVATOR)));
+                System.out.println("The " + Houses.get(count_of_houses).name + " " + (count_of_houses + 1) + " was build!");
                 count_of_houses++;
                 continue;
             }
@@ -81,7 +95,7 @@ public class Main {
                     while (true) {
                         short ask;
                         System.out.println("\n################################################################");
-                        System.out.println("House " + index + " control panel:");
+                        System.out.println(Houses.get(index-1).name + index + " control panel:");
                         System.out.println("""
                                 1) Show whole House
                                 2) Add Floor

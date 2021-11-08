@@ -35,43 +35,43 @@ public class House {
                 number_of_flat = new_number_of_flat;
             }
 
-            public int Get_count_of_humans() {
+            public int getCountOfHumans() {
                 return count_of_humans;
             }
 
-            public int Get_count_of_rooms() {
+            public int getCountOfRooms() {
                 return count_of_rooms;
             }
 
-            public double Get_square() {
+            public double getSquare() {
                 return square;
             }
 
-            public int Get_price() {
+            public int getPrice() {
                 return price;
             }
 
-            public int Get_number_of_flat() {
+            public int getNumberOfFlat() {
                 return number_of_flat;
             }
 
-            public void Set_count_of_humans(int new_count_of_humans) {
+            public void setCountOfHumans(int new_count_of_humans) {
                 count_of_humans = new_count_of_humans;
             }
 
-            public void Set_count_of_rooms(int new_count_of_rooms) {
+            public void setCountOfRooms(int new_count_of_rooms) {
                 count_of_rooms = new_count_of_rooms;
             }
 
-            public void Set_square(double new_square) {
+            public void setSquare(double new_square) {
                 square = new_square;
             }
 
-            public void Set_price(int new_price) {
+            public void setPrice(int new_price) {
                 price = new_price;
             }
 
-            public void Print_Flat() {
+            public void printFlat() {
                 System.out.println("          Number of flat: " + number_of_flat +
                         "\n          Count of humans: " + count_of_humans +
                         "\n          Count of rooms: " + count_of_rooms +
@@ -84,44 +84,44 @@ public class House {
             number_of_floor = new_number_of_floor;
         }
 
-        public void Add_flat(int new_count_of_humans, int new_count_of_rooms, double new_square, int new_price) {
+        public void addFlat(int new_count_of_humans, int new_count_of_rooms, double new_square, int new_price) {
             count_of_flats++;
             flats_on_floor.add(new Flat(new_count_of_humans, new_count_of_rooms, new_square, new_price, count_of_flats));
         }
 
-        public void Add_flat() {
+        public void addFlat() {
             count_of_flats++;
             flats_on_floor.add(new Flat(count_of_flats));
         }
 
-        public int Get_count_of_flats_on_floor() {
+        public int getCountOfFlatsOnFloor() {
             return flats_on_floor.size();
         }
 
-        public int Get_number_of_floor() {
+        public int getNumberOfFloor() {
             return number_of_floor;
         }
 
-        public int[] Get_numbers_of_flats_on_floor() {
+        public int[] getNumbersOfFlatsOnFloor() {
             int size = flats_on_floor.size();
             int[] Array = new int[size];
             for (int i = 0; i < size; i++) {
-                Array[i] = flats_on_floor.get(i).Get_number_of_flat();
+                Array[i] = flats_on_floor.get(i).getNumberOfFlat();
             }
             return Array;
         }
 
-        public int Get_Count_Of_Humans_On_Floor() {
+        public int getCountOfHumansOnFloor() {
             int sum = 0;
-            for (int i = 0; i < Get_count_of_flats_on_floor(); i++) {
+            for (int i = 0; i < getCountOfFlatsOnFloor(); i++) {
                 sum += flats_on_floor.get(i).count_of_humans;
             }
             return sum;
         }
 
-        public int Get_Square_Of_Floor() {
+        public int getSquareOfFloor() {
             int sum = 0;
-            for (int i = 0; i < Get_count_of_flats_on_floor(); i++) {
+            for (int i = 0; i < getCountOfFlatsOnFloor(); i++) {
                 sum += flats_on_floor.get(i).square;
             }
             return sum;
@@ -134,7 +134,7 @@ public class House {
         public void printFloor(){
             int count_of_flats_on_the_floor  = flats_on_floor.size();
             for (Flat flat : flats_on_floor) {
-                flat.Print_Flat();
+                flat.printFlat();
                 System.out.println("\n");
             }
         }
@@ -150,39 +150,39 @@ public class House {
         number_of_house = new_number_of_house;
     }
 
-    public void Add_floor() {
+    public void addFloor() {
         count_of_floors++;
         floors.add(new Floor(count_of_floors));
     }
 
-    public int Get_count_of_flats() {
+    public int getCountOfFlats() {
         return count_of_flats;
     }
 
-    public int Get_count_of_floors() {
+    public int getCountOfFloors() {
         return count_of_floors;
     }
 
-    public int Get_number_of_house() {
+    public int getNumberOfHouse() {
         return number_of_house;
     }
 
-    public void Set_number_of_house(int new_number) {
+    public void setNumberOfHouse(int new_number) {
         number_of_house = new_number;
     }
 
-    public int Get_Count_Of_Humans() {
+    public int getCountOfHumans() {
         int sum = 0;
         for (int i = 0; i < count_of_floors; i++) {
-            sum += floors.get(i).Get_Count_Of_Humans_On_Floor();
+            sum += floors.get(i).getCountOfHumansOnFloor();
         }
         return sum;
     }
 
-    public int Get_Square() {
+    public int getSquare() {
         int sum = 0;
         for (int i = 0; i < count_of_floors; i++) {
-            sum += floors.get(i).Get_Square_Of_Floor();
+            sum += floors.get(i).getSquareOfFloor();
         }
         return sum;
     }
@@ -192,13 +192,13 @@ public class House {
     }
 
     public void printHouse() {
-        System.out.println("The " + name + " " + this.Get_number_of_house() + ":\n");
-        int count_of_floors = this.Get_count_of_floors();
+        System.out.println("The " + name + " " + this.getNumberOfHouse() + ":\n");
+        int count_of_floors = this.getCountOfFloors();
         for (int i = 0; i < count_of_floors; i++) {
             System.out.println("     Floor " + (i + 1) + " :\n");
-            int count_of_flats_on_the_floor = this.floors.get(i).Get_count_of_flats_on_floor();
+            int count_of_flats_on_the_floor = this.floors.get(i).getCountOfFlatsOnFloor();
             for (int j = 0; j < count_of_flats_on_the_floor; j++) {
-                this.atFloor(i).flats_on_floor.get(j).Print_Flat();
+                this.atFloor(i).flats_on_floor.get(j).printFlat();
                 //System.out.println("\n");
             }
         }

@@ -1,16 +1,17 @@
-package com.company;
+package House;
+import java.util.List;
 import java.util.ArrayList;
 
 public class House {
     private int count_of_floors;
     private int count_of_flats;
     private int number_of_house;
-    public String name;
-    private  ArrayList<Floor> floors = new ArrayList<>();
+    protected String name;
+    private  List<Floor> floors = new ArrayList<>();
 
     public class Floor {
         private int number_of_floor;
-        private ArrayList<Flat> flats_on_floor = new ArrayList<>();
+        private List<Flat> flats_on_floor = new ArrayList<>();
 
         public class Flat {
             private int count_of_humans;
@@ -202,6 +203,10 @@ public class House {
                 //System.out.println("\n");
             }
         }
+    }
+
+    public String getName(){
+        return name;
     }
 }
 

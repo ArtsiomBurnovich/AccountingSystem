@@ -1,4 +1,8 @@
-package com.company;
+package com.AccountingSystem;
+import Factory.HousesTypes;
+import Factory.HouseFactory;
+import House.House;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,41 +22,62 @@ public class Main {
             command = command.replaceAll(" ", "");
             //System.out.println(command);
 
-            //Build house with parking: [build house with parking] or [build with parking] or [build w p]
-            if (command.contains("buildhousewithparking") || command.contains("buildwithparking") || command.contains("buildwp")){
-                Houses.add(HouseFactory.getHouse((EnumHouses.PARKING)));
-                System.out.println("The " + Houses.get(count_of_houses).name + " " + (count_of_houses + 1) + " was build!");
-                count_of_houses++;
-                continue;
-            }
+            switch (command) {
+                //Build house with parking: [build house with parking] or [build with parking] or [build w p]
+                case "buildwp" -> {
+                    Houses.add(HouseFactory.getHouse((HousesTypes.PARKING)));
+                    Houses.get(count_of_houses).setNumberOfHouse(count_of_houses + 1);
+                    System.out.println("The " + Houses.get(count_of_houses).getName() + " [" + (count_of_houses + 1) + "] was build!");
+                    count_of_houses++;
+                }
 
-            //Build house with helicopter place: [build house with helicopter place] or [build with helicopter] or [build w h]
-            if (command.contains("buildhousewithhelicopterplace") || command.contains("buildwithhelicopter") || command.contains("buildwh")){
-                Houses.add(HouseFactory.getHouse((EnumHouses.HELICOPTER)));
-                System.out.println("The " + Houses.get(count_of_houses).name + " " + (count_of_houses + 1) + " was build!");
-                count_of_houses++;
-                continue;
-            }
+                //Build house with helicopter place: [build house with helicopter place] or [build with helicopter] or [build w h]
+                case "buildwh" -> {
+                    Houses.add(HouseFactory.getHouse((HousesTypes.HELICOPTER)));
+                    Houses.get(count_of_houses).setNumberOfHouse(count_of_houses + 1);
+                    System.out.println("The " + Houses.get(count_of_houses).getName() + " [" + (count_of_houses + 1) + "] was build!");
+                    count_of_houses++;
+                }
 
-            //Build house with elevator: [build house with elevator] or [build with elevator] or [build w e]
-            if (command.contains("buildhousewithelevator") || command.contains("buildwithelevator") || command.contains("buildwe")){
-                Houses.add(HouseFactory.getHouse((EnumHouses.ELEVATOR)));
-                System.out.println("The " + Houses.get(count_of_houses).name + " " + (count_of_houses + 1) + " was build!");
-                count_of_houses++;
-                continue;
+                //Build house with elevator: [build house with elevator] or [build with elevator] or [build w e]
+                case "buildwe" -> {
+                    Houses.add(HouseFactory.getHouse((HousesTypes.ELEVATOR)));
+                    Houses.get(count_of_houses).setNumberOfHouse(count_of_houses + 1);
+                    System.out.println("The " + Houses.get(count_of_houses).getName() + " [" + (count_of_houses + 1) + "] was build!");
+                    count_of_houses++;
+                }
+                case "help" -> System.out.println("""
+                                                
+                        Build house with parking: [build house with parking] or [build with parking] or [build w p]
+                                                
+                        Build house with helicopter place: [build house with helicopter place] or [build with helicopter] or [build w h]
+                                                
+                        Build house with elevator: [build house with elevator] or [build with elevator] or [build w e]
+                                                
+                        To show all houses use: [show all houses] or [show all]
+                                                
+                        To show one house use: [show house [index]] or [show [index]]
+                                                
+                        To add one more floor to house use: [add floor [index]]
+                                                
+                        To open control panel of one house use: [control panel [index]] or [control [index]] or [c p [index]]
+                                                
+                        To end the program use: [exit]
+                                                
+                        """);
             }
 
             //To show all houses use: [show all houses] or [show all]
-            if (command.contains("showallhouses") || command.contains("showall")) {
+            if (command.contains("showall")){
                 if (count_of_houses == 0) {
                     System.out.println("Count of houses == 0! You should build new house!");
-                    continue;
+                    break;
                 } else {
                     for (int i = 0; i < count_of_houses; i++) {
                         Houses.get(i).printHouse();
                     }
                 }
-                continue;
+                break;
             }
 
             //To show one house use: [show house [index]] or [show [index]]
@@ -103,7 +128,7 @@ public class Main {
                     while (true) {
                         short ask;
                         System.out.println("\n################################################################");
-                        System.out.println(Houses.get(index-1).name + index + " control panel:");
+                        System.out.println(Houses.get(index-1).getName() + index + " control panel:");
                         System.out.println("""
                                 1) Show whole House
                                 2) Add Floor
@@ -325,38 +350,9 @@ public class Main {
             if (command.contains("exit")){
                 break;
             }
-
-            if(command.contains("help"))
-            {
-                System.out.println("""
-                        
-                        Build house with parking: [build house with parking] or [build with parking] or [build w p]
-                        
-                        Build house with helicopter place: [build house with helicopter place] or [build with helicopter] or [build w h]
-                        
-                        Build house with elevator: [build house with elevator] or [build with elevator] or [build w e]
-                        
-                        To show all houses use: [show all houses] or [show all]
-                        
-                        To show one house use: [show house [index]] or [show [index]]
-                        
-                        To add one more floor to house use: [add floor [index]]
-                        
-                        To open control panel of one house use: [control panel [index]] or [control [index]] or [c p [index]]
-                        
-                        To end the program use: [exit]
-                        
-                        """);
-            }
         }
     }
 }
-
-
-
-
-
-
 
  
 

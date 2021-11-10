@@ -1,6 +1,6 @@
-package com.company;
+package Factory;
 
-public enum EnumHouses {
+public enum HousesTypes {
     PARKING,
     HELICOPTER,
     ELEVATOR;

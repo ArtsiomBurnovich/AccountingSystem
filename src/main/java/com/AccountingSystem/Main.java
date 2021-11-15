@@ -1,8 +1,6 @@
 package com.AccountingSystem;
-import Factory.HousesTypes;
-import Factory.HouseFactory;
-import House.House;
-
+import com.AccountingSystem.factory.*;
+import com.AccountingSystem.house.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +10,7 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
         ArrayList<House> Houses = new ArrayList<>();
-        int count_of_houses = 0;
+        int countOfHouses = 0;
 
         System.out.println("Welcome to Accounting system!\n Use command [help] to show all available commands");
         String command;
@@ -23,28 +21,28 @@ public class Main {
             //System.out.println(command);
 
             switch (command) {
-                //Build house with parking: [build house with parking] or [build with parking] or [build w p]
+                //Build com.AccountingSystem.house with parking: [build com.AccountingSystem.house with parking] or [build with parking] or [build w p]
                 case "buildwp" -> {
                     Houses.add(HouseFactory.getHouse((HousesTypes.PARKING)));
-                    Houses.get(count_of_houses).setNumberOfHouse(count_of_houses + 1);
-                    System.out.println("The " + Houses.get(count_of_houses).getName() + " [" + (count_of_houses + 1) + "] was build!");
-                    count_of_houses++;
+                    Houses.get(countOfHouses).setNumberOfHouse(countOfHouses + 1);
+                    System.out.println("The " + Houses.get(countOfHouses).getName() + " [" + (countOfHouses + 1) + "] was build!");
+                    countOfHouses++;
                 }
 
-                //Build house with helicopter place: [build house with helicopter place] or [build with helicopter] or [build w h]
+                //Build com.AccountingSystem.house with helicopter place: [build com.AccountingSystem.house with helicopter place] or [build with helicopter] or [build w h]
                 case "buildwh" -> {
                     Houses.add(HouseFactory.getHouse((HousesTypes.HELICOPTER)));
-                    Houses.get(count_of_houses).setNumberOfHouse(count_of_houses + 1);
-                    System.out.println("The " + Houses.get(count_of_houses).getName() + " [" + (count_of_houses + 1) + "] was build!");
-                    count_of_houses++;
+                    Houses.get(countOfHouses).setNumberOfHouse(countOfHouses + 1);
+                    System.out.println("The " + Houses.get(countOfHouses).getName() + " [" + (countOfHouses + 1) + "] was build!");
+                    countOfHouses++;
                 }
 
-                //Build house with elevator: [build house with elevator] or [build with elevator] or [build w e]
+                //Build com.AccountingSystem.house with elevator: [build com.AccountingSystem.house with elevator] or [build with elevator] or [build w e]
                 case "buildwe" -> {
                     Houses.add(HouseFactory.getHouse((HousesTypes.ELEVATOR)));
-                    Houses.get(count_of_houses).setNumberOfHouse(count_of_houses + 1);
-                    System.out.println("The " + Houses.get(count_of_houses).getName() + " [" + (count_of_houses + 1) + "] was build!");
-                    count_of_houses++;
+                    Houses.get(countOfHouses).setNumberOfHouse(countOfHouses + 1);
+                    System.out.println("The " + Houses.get(countOfHouses).getName() + " [" + (countOfHouses + 1) + "] was build!");
+                    countOfHouses++;
                 }
                 case "help" -> System.out.println("""
                                                 
@@ -69,33 +67,52 @@ public class Main {
 
             //To show all houses use: [show all houses] or [show all]
             if (command.contains("showall")){
-                if (count_of_houses == 0) {
+                if (countOfHouses == 0) {
                     System.out.println("Count of houses == 0! You should build new house!");
                     break;
                 } else {
-                    for (int i = 0; i < count_of_houses; i++) {
-                        Houses.get(i).printHouse();
+                    for (int i = 0; i < countOfHouses; i++) {
+                       System.out.println("The " + Houses.get(i).getName() + " " + (i+1));
+                       for (int f = 0; f < Houses.get(i).getCountOfFloors(); f++){
+                           System.out.println("  Floor " + (f+1) + " :\n");
+                           for (int flat = 0; flat < Houses.get(i).getFloor(f).getCountOfFlatsOnFloor(); flat++){
+                               System.out.println("     Flat " + (flat+1));
+                               System.out.println("Count of humans: " + Houses.get(i).getFloor(f).getFlat(flat).getCountOfHumans());
+                               System.out.println("Count of rooms: " + Houses.get(i).getFloor(f).getFlat(flat).getCountOfRooms());
+                               System.out.println("Square: " + Houses.get(i).getFloor(f).getFlat(flat).getSquare());
+                               System.out.println("Price: " + Houses.get(i).getFloor(f).getFlat(flat).getPrice());
+                           }
+                       }
+                       System.out.println("\n");
                     }
                 }
-                break;
             }
-
-            //To show one house use: [show house [index]] or [show [index]]
-            if (command.contains("showhouse") || command.contains("show")){
-                command = command.replaceAll("[^0-9]", "");
-                if (command.isEmpty()){
-                    System.out.println("Wrong command! Must be: show [number of house]");
-                }
-                else {
-                    int index = Integer.parseInt(command);
-                    if (index > count_of_houses || index < 1) {
-                        System.out.println("Wrong index!");
-                        continue;
+            else{
+                //To show one house use: [show com.AccountingSystem.house [index]] or [show [index]]
+                if (command.contains("showhouse") || command.contains("show")){
+                    command = command.replaceAll("[^0-9]", "");
+                    if (command.isEmpty()){
+                        System.out.println("Wrong command! Must be: show [number of house]");
                     }
-                    Houses.get(index - 1).printHouse();
+                    else {
+                        int index = Integer.parseInt(command);
+                        if (index > countOfHouses || index < 1) {
+                            System.out.println("Wrong index!");
+                            continue;
+                        }
+                        for (int f = 0; f < Houses.get(index - 1).getCountOfFloors(); f++){
+                            System.out.println("  Floor " + (f+1));
+                            for (int flat = 0; flat < Houses.get(index - 1).getFloor(f).getCountOfFlatsOnFloor(); flat++){
+                                System.out.println("     Flat " + (flat+1));
+                                System.out.println("Count of humans: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfHumans());
+                                System.out.println("Count of rooms: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfRooms());
+                                System.out.println("Square: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getSquare());
+                                System.out.println("Price: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getPrice());
+                            }
+                        }
+                    }
                 }
             }
-
             //To add one more floor to house use: [add floor [index]]
             if (command.contains("addfloor")){
                 command = command.replaceAll("[^0-9]", "");
@@ -104,7 +121,7 @@ public class Main {
                 }
                 else{
                     int index = Integer.parseInt(command);
-                    if (index > count_of_houses || index < 0){
+                    if (index > countOfHouses || index < 0){
                         System.out.println("Wrong number of house!");
                         continue;
                     }
@@ -121,14 +138,14 @@ public class Main {
                 }
                 else {
                     int index = Integer.parseInt(command);
-                    if (index > count_of_houses || index < 0) {
+                    if (index > countOfHouses || index < 0) {
                         System.out.println("Wrong index!");
                         continue;
                     }
                     while (true) {
                         short ask;
                         System.out.println("\n################################################################");
-                        System.out.println(Houses.get(index-1).getName() + index + " control panel:");
+                        System.out.println(Houses.get(index-1).getName() + " " + index + " control panel:");
                         System.out.println("""
                                 1) Show whole House
                                 2) Add Floor
@@ -157,7 +174,16 @@ public class Main {
                         }
                         switch (ask) {
                             case 1:
-                                Houses.get(index - 1).printHouse();
+                                for (int f = 0; f < Houses.get(index - 1).getCountOfFloors(); f++){
+                                    System.out.println("  Floor " + (f+1) + " :\n");
+                                    for (int flat = 0; flat < Houses.get(index - 1).getFloor(f).getCountOfFlatsOnFloor(); flat++){
+                                        System.out.println("     Flat " + (flat+1) + " \n");
+                                        System.out.println("Count of humans: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfHumans() + "\n");
+                                        System.out.println("Count of rooms: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfRooms() + "\n");
+                                        System.out.println("Square: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getSquare() + "\n");
+                                        System.out.println("Price: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getPrice() + "\n");
+                                    }
+                                }
                                 break;
                             case 2:
                                 Houses.get(index - 1).addFloor();
@@ -166,36 +192,55 @@ public class Main {
                             case 3:
                                 while (true) {
                                     System.out.println("In what floor you want to add new flat? (1 - " + Houses.get(index - 1).getCountOfFloors() + ")");
-                                    int temp_floor;
-                                    temp_floor = in.nextInt();
-                                    if (temp_floor <= 0 || temp_floor > Houses.get(index - 1).getCountOfFloors()) {
+                                    int tempFloor;
+                                    tempFloor = in.nextInt();
+                                    if (tempFloor <= 0 || tempFloor > Houses.get(index - 1).getCountOfFloors()) {
+                                        if (tempFloor > Houses.get(index-1).getCountOfFloors()){
+                                            System.out.println("You number out of border! You should add more floors!");
+                                            break;
+                                        }
                                         System.out.println("Wrong number of floor! Count of floors in this house are " + Houses.get(index - 1).getCountOfFloors() + ". Try again!");
                                     } else {
-                                        int new_count_of_humans;
-                                        int new_count_of_rooms;
-                                        double new_square;
-                                        int new_price;
-
+                                        int newCountOfHumans;
+                                        int newCountOfRooms;
+                                        double newSquare;
+                                        int newPrice;
                                         System.out.println("Count of humans: ");
-                                        new_count_of_humans = in.nextInt();
+                                        newCountOfHumans = in.nextInt();
                                         System.out.println("Count of rooms: ");
-                                        new_count_of_rooms = in.nextInt();
+                                        newCountOfRooms = in.nextInt();
                                         System.out.println("Square: ");
-                                        new_square = in.nextDouble();
+                                        newSquare = in.nextDouble();
                                         System.out.println("Price: ");
-                                        new_price = in.nextInt();
-                                        Houses.get(index - 1).atFloor(temp_floor - 1).addFlat(new_count_of_humans, new_count_of_rooms, new_square, new_price);
-
+                                        newPrice = in.nextInt();
+                                        Houses.get(index - 1).getFloor(tempFloor - 1).addFlat(newCountOfHumans, newCountOfRooms, newSquare, newPrice, Houses.get(index-1).getCountOfFlats());
+                                        Houses.get(index-1).setCountOfFlats(Houses.get(index-1).getCountOfFlats()+1);
                                         System.out.println("New flat added. Current count of flats:" + Houses.get(index - 1).getCountOfFlats());
                                         break;
                                     }
                                 }
                                 break;
                             case 4:
-                                System.out.println("Count of Humans in House: " + Houses.get(index - 1).getCountOfHumans());
+                                int tempCountOfHumans = 0;
+                                for (int h = 0; h < countOfHouses; h++){
+                                    for (int floor = 0; floor < Houses.get(h).getCountOfFloors(); floor++) {
+                                        for (int flat = 0; flat < Houses.get(h).getFloor(floor).getCountOfFlatsOnFloor(); flat++) {
+                                            tempCountOfHumans += Houses.get(h).getFloor(floor).getFlat(flat).getCountOfHumans();
+                                        }
+                                    }
+                                }
+                                System.out.println("Count of Humans in House: " + tempCountOfHumans);
                                 break;
                             case 5:
-                                System.out.println("Whole square of House: " + Houses.get(index - 1).getSquare());
+                                int tempSquare = 0;
+                                for (int h = 0; h < countOfHouses; h++){
+                                    for (int floor = 0; floor < Houses.get(h).getCountOfFloors(); floor++) {
+                                        for (int flat = 0; flat < Houses.get(h).getFloor(floor).getCountOfFlatsOnFloor(); flat++) {
+                                            tempSquare += Houses.get(h).getFloor(floor).getFlat(flat).getSquare();
+                                        }
+                                    }
+                                }
+                                System.out.println("Count of Humans in House: " + tempSquare);
                                 break;
                             case 6:
                                 boolean flag = true;
@@ -205,15 +250,14 @@ public class Main {
                                         break;
                                     }
                                     System.out.println("In what floor you want to create? (1 - " + Houses.get(index - 1).getCountOfFloors() + ")");
-                                    int temp_floor;
-                                    temp_floor = in.nextInt();
-                                    if (temp_floor < 1 || temp_floor > Houses.get(index - 1).getCountOfFloors()) {
+                                    int tempFloor;
+                                    tempFloor = in.nextInt();
+                                    if (tempFloor < 1 || tempFloor > Houses.get(index - 1).getCountOfFloors()) {
                                         System.out.println("Wrong number of floor! Try again!");
                                         continue;
                                     }
                                     while (true) {
                                         short ask_1;
-
                                         while (true) {
                                             try {
                                                 in = new Scanner(System.in);
@@ -224,7 +268,7 @@ public class Main {
                                             }
                                         }
                                         System.out.println("\n################################################################");
-                                        System.out.println("Floor " + temp_floor + " control panel");
+                                        System.out.println("Floor " + tempFloor + " control panel");
                                         System.out.println("""
                                                 1) Show whole Floor
                                                 2) Add Flat
@@ -246,36 +290,53 @@ public class Main {
                                         switch (ask_1) {
                                             case 1 -> {
                                                 System.out.println("    Flats:\n");
-                                                Houses.get(index - 1).atFloor(temp_floor - 1).printFloor();
+                                                for (int flat = 0; flat < Houses.get(index - 1).getFloor(tempFloor-1).getCountOfFlatsOnFloor(); flat++){
+                                                    System.out.println("     Flat " + (flat+1) + " \n");
+                                                    System.out.println("Count of humans: " + Houses.get(index - 1).getFloor(tempFloor-1).getFlat(flat).getCountOfHumans());
+                                                    System.out.println("Count of rooms: " + Houses.get(index - 1).getFloor(tempFloor-1).getFlat(flat).getCountOfRooms());
+                                                    System.out.println("Square: " + Houses.get(index - 1).getFloor(tempFloor-1).getFlat(flat).getSquare());
+                                                    System.out.println("Price: " + Houses.get(index - 1).getFloor(tempFloor-1).getFlat(flat).getPrice());
+                                                }
                                             }
                                             case 2 -> {
-                                                int new_count_of_humans;
-                                                int new_count_of_rooms;
-                                                double new_square;
-                                                int new_price;
+                                                int newCountOfHumans;
+                                                int newCountOfRooms;
+                                                double newSquare;
+                                                int newPrice;
                                                 System.out.println("Count of humans: ");
-                                                new_count_of_humans = in.nextInt();
+                                                newCountOfHumans = in.nextInt();
                                                 System.out.println("Count of rooms: ");
-                                                new_count_of_rooms = in.nextInt();
+                                                newCountOfRooms = in.nextInt();
                                                 System.out.println("Square: ");
-                                                new_square = in.nextDouble();
+                                                newSquare = in.nextDouble();
                                                 System.out.println("Price: ");
-                                                new_price = in.nextInt();
-                                                Houses.get(index - 1).atFloor(temp_floor - 1).addFlat(new_count_of_humans, new_count_of_rooms, new_square, new_price);
+                                                newPrice = in.nextInt();
+                                                Houses.get(index - 1).getFloor(tempFloor - 1).addFlat(newCountOfHumans, newCountOfRooms, newSquare, newPrice, Houses.get(index-1).getCountOfFlats());
+                                                Houses.get(index-1).setCountOfFlats(Houses.get(index-1).getCountOfFlats()+1);
                                                 System.out.println("New flat added. Current count of flats:" + Houses.get(index - 1).getCountOfFlats());
+                                                break;
                                             }
-                                            case 3 -> System.out.println(Houses.get(index - 1).atFloor(temp_floor - 1).getCountOfHumansOnFloor());
+                                            case 3 ->{
+                                                int tempCount = 0;
+                                                for (int i = 0; i < Houses.get(index-1).getFloor(tempFloor-1).getCountOfFlatsOnFloor(); i++){
+                                                    tempCount += Houses.get(index-1).getFloor(tempFloor-1).getFlat(i).getCountOfHumans();
+                                                }
+                                                System.out.println("Count of humans on the floor " + tempFloor + " is: " + tempCount);
+                                            }
                                             case 4 -> {
-                                                Houses.get(index - 1).atFloor(temp_floor - 1).getSquareOfFloor();
-                                                System.out.println(Houses.get(index - 1).atFloor(temp_floor - 1).getSquareOfFloor());
+                                                int tempFloorSquare = 0;
+                                                for (int i = 0; i < Houses.get(index-1).getFloor(tempFloor-1).getCountOfFlatsOnFloor(); i++){
+                                                    tempFloorSquare += Houses.get(index-1).getFloor(tempFloor-1).getFlat(i).getSquare();
+                                                }
+                                                System.out.println("Count of humans on the floor " + tempFloor + " is: " + tempFloorSquare);
                                             }
                                             case 5 -> {
                                                 boolean flag_1 = true;
                                                 while (flag_1) {
                                                     short temp_flat;
-                                                    System.out.println("Choose the flat on the floor (1 - " + Houses.get(index - 1).atFloor(temp_floor - 1).getCountOfFlatsOnFloor() + ")");
+                                                    System.out.println("Choose the flat on the floor (1 - " + Houses.get(index - 1).getFloor(tempFloor - 1).getCountOfFlatsOnFloor() + ")");
                                                     temp_flat = in.nextShort();
-                                                    if (temp_flat < 1 || temp_flat > Houses.get(index - 1).atFloor(temp_floor - 1).getCountOfFlatsOnFloor()) {
+                                                    if (temp_flat < 1 || temp_flat > Houses.get(index - 1).getFloor(tempFloor - 1).getCountOfFlatsOnFloor()) {
                                                         System.out.println("Wrong number of flat! Try again!");
                                                         continue;
                                                     }
@@ -314,25 +375,25 @@ public class Main {
                                                                 int new_count_of_humans_2;
                                                                 System.out.println("Count of humans: ");
                                                                 new_count_of_humans_2 = in.nextInt();
-                                                                Houses.get(index - 1).atFloor(temp_floor - 1).atFlat(temp_flat - 1).setCountOfHumans(new_count_of_humans_2);
+                                                                Houses.get(index - 1).getFloor(tempFloor - 1).getFlat(temp_flat - 1).setCountOfHumans(new_count_of_humans_2);
                                                             }
                                                             case 2 -> {
                                                                 int new_count_of_rooms_2;
                                                                 System.out.println("Count of rooms: ");
                                                                 new_count_of_rooms_2 = in.nextInt();
-                                                                Houses.get(index - 1).atFloor(temp_floor - 1).atFlat(temp_flat - 1).setCountOfRooms(new_count_of_rooms_2);
+                                                                Houses.get(index - 1).getFloor(tempFloor - 1).getFlat(temp_flat - 1).setCountOfRooms(new_count_of_rooms_2);
                                                             }
                                                             case 3 -> {
                                                                 double new_square_2;
                                                                 System.out.println("Square: ");
                                                                 new_square_2 = in.nextDouble();
-                                                                Houses.get(index - 1).atFloor(temp_floor - 1).atFlat(temp_flat - 1).setSquare(new_square_2);
+                                                                Houses.get(index - 1).getFloor(tempFloor - 1).getFlat(temp_flat - 1).setSquare(new_square_2);
                                                             }
                                                             case 4 -> {
                                                                 int new_price_2;
                                                                 System.out.println("Price: ");
                                                                 new_price_2 = in.nextInt();
-                                                                Houses.get(index - 1).atFloor(temp_floor - 1).atFlat(temp_flat - 1).setPrice(new_price_2);
+                                                                Houses.get(index - 1).getFloor(tempFloor - 1).getFlat(temp_flat - 1).setPrice(new_price_2);
                                                             }
                                                         }
                                                     }

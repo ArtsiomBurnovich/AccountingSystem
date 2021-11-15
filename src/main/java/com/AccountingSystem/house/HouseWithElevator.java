@@ -1,6 +1,4 @@
-package House;
-
-import House.House;
+package com.AccountingSystem.house;
 
 public class HouseWithElevator extends House {
    public HouseWithElevator(){

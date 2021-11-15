@@ -1,4 +1,4 @@
-package Factory;
+package com.AccountingSystem.factory;
 
 public enum HousesTypes {
     PARKING,

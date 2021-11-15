@@ -1,12 +1,7 @@
-package Factory;
-import Factory.HousesTypes;
-import House.HouseWithParking;
-import House.HouseWithElevator;
-import House.HouseWithHelicopterPlace;
-import House.House;
+package com.AccountingSystem.factory;
+import com.AccountingSystem.house.*;
 
 public class HouseFactory {
-
     public static House getHouse(HousesTypes type){
         House toReturn = null;
         switch (type){

@@ -49,12 +49,4 @@ public class Flat {
     public void setPrice(double newPrice) {
         price = newPrice;
     }
-    //To delete:
-    public void printFlat() {
-        System.out.println("          Number of flat: " + numberOfFlat +
-                "\n          Count of humans: " + countOfHumans +
-                "\n          Count of rooms: " + countOfRooms +
-                "\n          Square: " + square +
-                "\n          Price: " + price);
-    }
 }

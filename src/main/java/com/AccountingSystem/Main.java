@@ -74,7 +74,7 @@ public class Main {
                     for (int i = 0; i < countOfHouses; i++) {
                        System.out.println("The " + Houses.get(i).getName() + " " + (i+1));
                        for (int f = 0; f < Houses.get(i).getCountOfFloors(); f++){
-                           System.out.println("  Floor " + (f+1) + " :\n");
+                           System.out.println("  Floor " + (f+1) + " :");
                            for (int flat = 0; flat < Houses.get(i).getFloor(f).getCountOfFlatsOnFloor(); flat++){
                                System.out.println("     Flat " + (flat+1));
                                System.out.println("Count of humans: " + Houses.get(i).getFloor(f).getFlat(flat).getCountOfHumans());
@@ -83,7 +83,6 @@ public class Main {
                                System.out.println("Price: " + Houses.get(i).getFloor(f).getFlat(flat).getPrice());
                            }
                        }
-                       System.out.println("\n");
                     }
                 }
             }
@@ -144,7 +143,7 @@ public class Main {
                     }
                     while (true) {
                         short ask;
-                        System.out.println("\n################################################################");
+                        System.out.println("################################################################");
                         System.out.println(Houses.get(index-1).getName() + " " + index + " control panel:");
                         System.out.println("""
                                 1) Show whole House
@@ -175,13 +174,13 @@ public class Main {
                         switch (ask) {
                             case 1:
                                 for (int f = 0; f < Houses.get(index - 1).getCountOfFloors(); f++){
-                                    System.out.println("  Floor " + (f+1) + " :\n");
+                                    System.out.println("  Floor " + (f+1) + " :");
                                     for (int flat = 0; flat < Houses.get(index - 1).getFloor(f).getCountOfFlatsOnFloor(); flat++){
-                                        System.out.println("     Flat " + (flat+1) + " \n");
-                                        System.out.println("Count of humans: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfHumans() + "\n");
-                                        System.out.println("Count of rooms: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfRooms() + "\n");
-                                        System.out.println("Square: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getSquare() + "\n");
-                                        System.out.println("Price: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getPrice() + "\n");
+                                        System.out.println("     Flat " + (flat+1));
+                                        System.out.println("Count of humans: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfHumans());
+                                        System.out.println("Count of rooms: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getCountOfRooms());
+                                        System.out.println("Square: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getSquare());
+                                        System.out.println("Price: " + Houses.get(index - 1).getFloor(f).getFlat(flat).getPrice());
                                     }
                                 }
                                 break;

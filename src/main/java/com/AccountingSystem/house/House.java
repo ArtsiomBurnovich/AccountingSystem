@@ -2,7 +2,7 @@ package com.AccountingSystem.house;
 import java.util.ArrayList;
 import java.util.List;
 
-public class House {
+public class House implements Comparable<House> {
     private int countOfFloors;
     private int countOfFlats;
     private int numberOfHouse;
@@ -43,4 +43,8 @@ public class House {
         return name;
     }
 
+    @Override
+    public int compareTo(House o) {
+        return this.getNumberOfHouse() - o.getNumberOfHouse();
+    }
 }

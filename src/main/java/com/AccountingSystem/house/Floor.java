@@ -11,9 +11,8 @@ public class Floor {
         numberOfFloor = newNumberOfFloor;
     }
 
-    public void addFlat(int newCountOfHumans, int newCountOfRooms, double newSquare, int newPrice, int newNumberOfFlat) {
-        flatsOnFloor.add(new Flat(newCountOfHumans, newCountOfRooms, newSquare, newPrice, newNumberOfFlat));
-
+    public void addFlat(Flat flat) {
+        flatsOnFloor.add(flat);
     }
     public Flat getFlat(int index) {
         return flatsOnFloor.get(index);
@@ -24,5 +23,7 @@ public class Floor {
     public int getNumberOfFloor(){
         return numberOfFloor;
     }
+
+
 }
 

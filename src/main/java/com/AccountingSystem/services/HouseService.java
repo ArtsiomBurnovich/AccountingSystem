@@ -19,7 +19,6 @@ public class HouseService {
         return o1.getCountOfFlats() - o2.getCountOfFlats();
     }
 
-
     public static int calculateHumans(House o){
         int temp = 0;
         for (int i = 0; i < o.getCountOfFloors(); i++)
@@ -52,5 +51,12 @@ public class HouseService {
             }
         }
         return temp;
+    }
+    public static void printHouse(House o){
+        for (int i = 0; i < o.getCountOfFloors(); i++)
+        {
+            System.out.println("Floor: " + (i+1));
+            FloorService.printFloor(o.getFloor(i));
+        }
     }
 }

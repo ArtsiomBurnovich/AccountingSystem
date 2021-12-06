@@ -41,4 +41,11 @@ public class FloorService {
         return temp;
     }
 
+    public static void printFloor(Floor o){
+        for (int i = 0; i < o.getCountOfFlatsOnFloor(); i++)
+        {
+            System.out.println("Flat: " + (i+1));
+            FlatService.printFlat(o.getFlat(i));
+        }
+    }
 }

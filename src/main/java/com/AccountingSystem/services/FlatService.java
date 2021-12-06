@@ -3,6 +3,7 @@ package com.AccountingSystem.services;
 import com.AccountingSystem.house.Flat;
 
 public class FlatService {
+
     public static int compareByCountOfHumans(Flat o1, Flat o2){
         return o1.getCountOfHumans() - o2.getCountOfHumans();
     }
@@ -14,5 +15,8 @@ public class FlatService {
     }
     public static double compareBySquare(Flat o1, Flat o2){
         return o1.getSquare() - o2.getSquare();
+    }
+    public static void printFlat(Flat o){
+        System.out.println("Count Of Rooms" + o.getCountOfRooms() + "\nCount Oh Humans: " + o.getCountOfHumans()+ "\nSquare: " + o.getSquare() + "\nPrice: " + o.getPrice());
     }
 }

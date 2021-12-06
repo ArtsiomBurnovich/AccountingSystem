@@ -6,5 +6,4 @@ import java.util.ArrayList;
 
 public class AccountingSystem {
     private final List<House> houses = new ArrayList<House>();
-
 }

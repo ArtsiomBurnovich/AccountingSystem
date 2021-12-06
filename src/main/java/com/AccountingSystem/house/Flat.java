@@ -1,10 +1,16 @@
 package com.AccountingSystem.house;
 
+import com.AccountingSystem.house.facilities.flatFacilities.*;
+
+import java.util.TreeMap;
+
 public class Flat {
     private int countOfHumans;
     private int countOfRooms;
     private double square;
     private double price;
+    private SwimmingPool swimmingPool;
+    private Terrace terrace;
     private int numberOfFlat;
 
     Flat() {
@@ -13,13 +19,17 @@ public class Flat {
         square = 0;
         price = 0;
         numberOfFlat = 0;
+        swimmingPool = null;
+        terrace = null;
     }
-    Flat(int newCountOfHumans, int newCountOfRooms, double newSquare, int newPrice, int newNumberOfFlat) {
+    public Flat(int newCountOfHumans, int newCountOfRooms, double newSquare, double newPrice, int newNumberOfFlat, SwimmingPool swimmingPool, Terrace terrace) {
         countOfHumans = newCountOfHumans;
         countOfRooms = newCountOfRooms;
         square = newSquare;
         price = newPrice;
         numberOfFlat = newNumberOfFlat;
+        this.swimmingPool = swimmingPool;
+        this.terrace = terrace;
     }
 
     public int getCountOfHumans() {
@@ -49,4 +59,5 @@ public class Flat {
     public void setPrice(double newPrice) {
         price = newPrice;
     }
+
 }

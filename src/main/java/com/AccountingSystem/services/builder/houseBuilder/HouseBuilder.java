@@ -22,7 +22,7 @@ public class HouseBuilder {
         this.numberOfHouse = numberOfHouse;
     }
 
-    public void setElevator(int maxElevatorLoad, int elevatorSpeed) {
+    public void setElevator(int maxElevatorLoad, double elevatorSpeed) {
         this.elevator.setElevatorSpeed(elevatorSpeed);
         this.elevator.setMaxLoad(maxElevatorLoad);
     }

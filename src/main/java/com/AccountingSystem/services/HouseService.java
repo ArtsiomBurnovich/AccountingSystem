@@ -53,6 +53,9 @@ public class HouseService {
         return temp;
     }
     public static void printHouse(House o){
+        System.out.println("House " + o.getNumberOfHouse());
+        System.out.println("Parking (count of car places): " + o.getParking().getMaxCountOfCars());
+        System.out.println("Elevator (max speed (m/s), max load(kg): " + o.getElevator().getElevatorSpeed() + ", " + o.getElevator().getMaxLoad());
         for (int i = 0; i < o.getCountOfFloors(); i++)
         {
             System.out.println("Floor: " + (i+1));

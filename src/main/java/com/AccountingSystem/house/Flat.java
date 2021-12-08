@@ -44,9 +44,16 @@ public class Flat {
     public double getPrice() {
         return price;
     }
+    public SwimmingPool getSwimmingPool() {
+        return swimmingPool;
+    }
+    public Terrace getTerrace() {
+        return terrace;
+    }
     public int getNumberOfFlat() {
         return numberOfFlat;
     }
+
     public void setCountOfHumans(int newCountOfHumans) {
         countOfHumans = newCountOfHumans;
     }
@@ -59,5 +66,10 @@ public class Flat {
     public void setPrice(double newPrice) {
         price = newPrice;
     }
-
+    public void setSwimmingPool(SwimmingPool swimmingPool) {
+        this.swimmingPool = swimmingPool;
+    }
+    public void setTerrace(Terrace terrace) {
+        this.terrace = terrace;
+    }
 }

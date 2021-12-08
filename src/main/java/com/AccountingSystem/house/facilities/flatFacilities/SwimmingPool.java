@@ -19,4 +19,12 @@ public class SwimmingPool {
     public void setVolume (double volume){
         this.volume = volume;
     }
+
+    public double getMaxDepth() {
+        return maxDepth;
+    }
+    public double getVolume() {
+        return volume;
+    }
 }
+

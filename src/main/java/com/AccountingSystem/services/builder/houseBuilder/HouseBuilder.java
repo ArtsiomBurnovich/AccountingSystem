@@ -2,12 +2,23 @@ package com.AccountingSystem.services.builder.houseBuilder;
 
 import com.AccountingSystem.house.House;
 import com.AccountingSystem.house.facilities.houseFacilities.*;
+import com.AccountingSystem.services.HouseService;
 
 public class HouseBuilder {
     private int countOfFloors = 0;
     private int numberOfHouse = 0;
     private Elevator elevator = null;
     private Parking parking = null;
+
+    //singleton
+    public static HouseBuilder houseBuilder;
+    private HouseBuilder(){};
+    public static HouseBuilder getHouseBuilder(){
+        if(houseBuilder == null){
+            houseBuilder = new HouseBuilder();
+        }
+        return houseBuilder;
+    }
 
 
     public void setNumberOfHouse(int numberOfHouse) {

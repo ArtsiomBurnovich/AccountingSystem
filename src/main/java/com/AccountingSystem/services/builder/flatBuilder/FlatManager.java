@@ -36,12 +36,12 @@ public class FlatManager {
         return builder.getFlat();
     }
     public Flat getFlat(FlatBuilder builder, int numberOfFlat, double square){
+        builder.setZeros();
         Random rand = new Random();
         ConstantsForRandomGeneration c = new ConstantsForRandomGeneration();
         boolean flag;
         double poolSquare = 0;
         double terraceSquare = 0;
-        builder.setZeros();
         builder.setNumberOfFlat(numberOfFlat);
         builder.setSquare(square);
         flag = rand.nextBoolean();

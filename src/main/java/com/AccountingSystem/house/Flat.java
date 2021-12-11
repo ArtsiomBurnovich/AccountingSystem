@@ -2,7 +2,6 @@ package com.AccountingSystem.house;
 
 import com.AccountingSystem.house.facilities.flatFacilities.*;
 
-import java.util.TreeMap;
 
 public class Flat {
     private int countOfHumans;

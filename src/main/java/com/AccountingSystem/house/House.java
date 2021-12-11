@@ -1,7 +1,6 @@
 package com.AccountingSystem.house;
-import com.AccountingSystem.house.facilities.houseFacilities.Elevator;
-import com.AccountingSystem.house.facilities.houseFacilities.Parking;
 
+import com.AccountingSystem.house.facilities.houseFacilities.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +53,6 @@ public class House {
         this.elevator.setElevatorSpeed(elevatorSpeed);
         this.elevator.setMaxLoad(maxElevatorLoad);
     }
-
     public void addFloor() {
         countOfFloors++;
         floors.add(new Floor(countOfFloors));

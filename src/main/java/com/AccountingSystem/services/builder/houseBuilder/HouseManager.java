@@ -8,30 +8,32 @@ import com.AccountingSystem.services.builder.flatBuilder.FlatManager;
 import java.util.Random;
 
 public class HouseManager {
-    public static House getSimpleHouse(HouseBuilder builder, int numberOfHouse){
-        builder.setNumberOfHouse(numberOfHouse);
-        return builder.getHouse();
+    public static House getSimpleHouse(HouseBuilder houseBuilder, int numberOfHouse){
+        houseBuilder.setNumberOfHouse(numberOfHouse);
+        return houseBuilder.getHouse();
     }
-    public static House getRandomHouse(HouseBuilder builder, FlatBuilder flatBuilder, int numberOfHouse, int countOfFloors, int countOfFlats, double averageSquareOfFlats){
+    public static House getRandomHouse(HouseBuilder houseBuilder, FlatBuilder flatBuilder, int numberOfHouse, int countOfFloors, int countOfFlats, double averageSquareOfFlats){
+        houseBuilder.setZeros();
+        houseBuilder.setNumberOfHouse(numberOfHouse);
         boolean flag;
         Random rand = new Random();
         ConstantsForRandomGeneration c = new ConstantsForRandomGeneration();
         FlatManager flatManager = new FlatManager();
-        builder.setZeros();
+        
         //set parking
-        builder.setParking(countOfFlats);
+        houseBuilder.setParking(countOfFlats);
 
         //calculating and setting elevator (load and speed)
         if(countOfFloors > 1){
             double tempElevSpeed = Math.log(countOfFloors)/Math.log(2.0);
             double tempElevLoad = Math.log(countOfFlats)/Math.log(2.0) * 100 + 300;
-            builder.setElevator((int) tempElevLoad, tempElevSpeed);
+            houseBuilder.setElevator((int) tempElevLoad, tempElevSpeed);
         }
 
         //computing and creating house with flats
         int tempCountOfFlatsOnFloor = countOfFlats / countOfFloors;
         int extraFlats = countOfFlats % countOfFloors;
-        House house = builder.getHouse();
+        House house = houseBuilder.getHouse();
         double tempSquare;
         double deltaSquare = 0;
         for (int i = 0; i < countOfFloors; i++)

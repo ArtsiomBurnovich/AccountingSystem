@@ -2,6 +2,7 @@ package com.AccountingSystem.services.builder.flatBuilder;
 
 import com.AccountingSystem.house.facilities.flatFacilities.*;
 import com.AccountingSystem.house.Flat;
+import com.AccountingSystem.services.builder.houseBuilder.HouseBuilder;
 
 public class FlatBuilder {
     private int countOfHumans = 0;
@@ -11,6 +12,17 @@ public class FlatBuilder {
     private SwimmingPool swimmingPool = null;
     private Terrace terrace = null;
     private int numberOfFlat = 0;
+
+    //singleton
+    private static FlatBuilder flatBuilder;
+    private FlatBuilder(){};
+    public static FlatBuilder getFlatBuilder(){
+        if (flatBuilder == null){
+            flatBuilder = new FlatBuilder();
+        }
+        return flatBuilder;
+    }
+
 
     public void setCountOfHumans(int countOfHumans){
         this.countOfHumans = countOfHumans;

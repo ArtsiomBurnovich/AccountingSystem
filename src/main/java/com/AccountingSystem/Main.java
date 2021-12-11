@@ -13,12 +13,13 @@ public class Main {
     public static void main(String[] args) {
 
         AccountingSystem acs = new AccountingSystem();
-        HouseBuilder houseBuilder = new HouseBuilder();
-        FlatBuilder flatBuilder = new FlatBuilder();
 
-        acs.addHouse(HouseManager.getRandomHouse(houseBuilder, flatBuilder, 36, 24, 36, 100));
+        acs.addHouse(HouseManager.getRandomHouse(HouseBuilder.getHouseBuilder(), FlatBuilder.getFlatBuilder(), 36, 24, 36, 100));
         House house =  acs.getHouse(0);
+        acs.addHouse(HouseManager.getRandomHouse(HouseBuilder.getHouseBuilder(), FlatBuilder.getFlatBuilder(), 1, 1, 2, 90));
+        HouseService.printHouse(acs.getHouse(1));
         HouseService.printHouse(house);
+
     }
 }
 

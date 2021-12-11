@@ -52,6 +52,14 @@ public class HouseService {
         }
         return temp;
     }
+    public static int calculateFlats(House o){
+        int tempCounter = 0;
+        for (int i = 0; i < o.getCountOfFloors(); i++)
+        {
+            tempCounter += o.getFloor(i).getCountOfFlatsOnFloor();
+        }
+        return tempCounter;
+    }
     public static void printHouse(House o){
         System.out.println("House " + o.getNumberOfHouse());
         System.out.println("Floors: " + o.getCountOfFloors());
@@ -78,13 +86,4 @@ public class HouseService {
             FloorService.printFloor(o.getFloor(i));
         }
     }
-    public static int calculateFlats(House o){
-        int tempCounter = 0;
-        for (int i = 0; i < o.getCountOfFloors(); i++)
-        {
-            tempCounter += o.getFloor(i).getCountOfFlatsOnFloor();
-        }
-        return tempCounter;
-    }
-
 }

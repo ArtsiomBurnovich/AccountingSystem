@@ -16,7 +16,7 @@ public class HouseService {
         return calculateHumans(o1) - calculateHumans(o2);
     }
     public static int compareByCountOfFlats(House o1, House o2){
-        return o1.getCountOfFlats() - o2.getCountOfFlats();
+        return calculateFlats(o1) - calculateFlats(o2);
     }
 
     public static int calculateHumans(House o){
@@ -54,12 +54,37 @@ public class HouseService {
     }
     public static void printHouse(House o){
         System.out.println("House " + o.getNumberOfHouse());
-        System.out.println("Parking (count of car places): " + o.getParking().getMaxCountOfCars());
-        System.out.println("Elevator (max speed (m/s), max load(kg): " + o.getElevator().getElevatorSpeed() + ", " + o.getElevator().getMaxLoad());
+        System.out.println("Floors: " + o.getCountOfFloors());
+        System.out.println("Flats: " + calculateFlats(o));
+        System.out.println("Full Square (m^2): " + HouseService.calculateSquare(o));
+        System.out.println("Count Of Residents: " + HouseService.calculateHumans(o));
+        System.out.println("Full Price: " + HouseService.calculatePrice(o));
+        if(o.getParking() == null){
+            System.out.println("Parking (count of car places): NO");
+        }
+        else{
+            System.out.println("Parking (count of car places): " + o.getParking().getMaxCountOfCars());
+        }
+        if(o.getElevator() == null){
+            System.out.println("Elevator (max speed (m/s), max load(kg): NO");
+        }
+        else{
+            System.out.println("Elevator (max speed (m/s), max load(kg): " + o.getElevator().getElevatorSpeed() + ", " + o.getElevator().getMaxLoad());
+        }
         for (int i = 0; i < o.getCountOfFloors(); i++)
         {
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             System.out.println("Floor: " + (i+1));
             FloorService.printFloor(o.getFloor(i));
         }
     }
+    public static int calculateFlats(House o){
+        int tempCounter = 0;
+        for (int i = 0; i < o.getCountOfFloors(); i++)
+        {
+            tempCounter += o.getFloor(i).getCountOfFlatsOnFloor();
+        }
+        return tempCounter;
+    }
+
 }

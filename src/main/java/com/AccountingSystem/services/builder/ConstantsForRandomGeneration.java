@@ -1,35 +1,54 @@
 package com.AccountingSystem.services.builder;
 
 public class ConstantsForRandomGeneration {
-    private int MAX_COUNT_OF_PEOPLE = 10;
+    private final int MAX_COUNT_OF_PEOPLE = 10;
 
-    private double MIN_FLAT_SQUARE = 10;
-    private double MAX_FLAT_SQUARE = (int) 1e4;
+    private final double MIN_FLAT_SQUARE = 10;
+    private final double MAX_FLAT_SQUARE = (int) 1e4;
 
-    private int MIN_FLAT_PRICE = (int) 1e4;
-    private int MAX_FLAT_PRICE = (int) 1e6;
+    private final int MIN_FLAT_PRICE = (int) 1e4;
+    private final int MAX_FLAT_PRICE = (int) 1e6;
 
-    private int MAX_COUNT_OF_ROOMS = 20;
+    private final int MAX_COUNT_OF_ROOMS = 20;
 
-    private double MIN_POOL_DEPTH = 0.2;
-    private double MAX_POOL_DEPTH = 3;
+    private final double MIN_POOL_DEPTH = 0.2;
+    private final double MAX_POOL_DEPTH = 1.5;
 
-    private double MAX_POOL_POSSIBLE_VOLUME = 0.07;
-    private double MIN_POOL_POSSIBLE_VOLUME = 0.02;
+    private final double MAX_POOL_POSSIBLE_VOLUME = 0.07;
+    private final double MIN_POOL_POSSIBLE_VOLUME = 0.02;
 
-    private double MAX_TERRACE_POSSIBLE_SQUARE = 0.07;
-    private double MIN_TERRACE_POSSIBLE_SQUARE = 0.02;
+    private final double MAX_TERRACE_POSSIBLE_SQUARE = 0.07;
+    private final double MIN_TERRACE_POSSIBLE_SQUARE = 0.02;
 
-    private double MIN_ELEVATOR_SPEED = 0.5;
-    private double MAX_ELEVATOR_SPEED = 10;
+    private final double MIN_ELEVATOR_SPEED = 1;
+    private final double MAX_ELEVATOR_SPEED = 10;
 
-    private int MIN_ELEVATOR_LOAD = 150;
-    private int MAX_ELEVATOR_LOAD = 2000;
+    private final int MIN_ELEVATOR_LOAD = 150;
+    private final int MAX_ELEVATOR_LOAD = 2000;
 
-    private int MIN_CARS_COUNT = 10;
-    private int MAX_CARS_COUNT = 1000;
+    private final int MIN_CARS_COUNT = 10;
+    private final int MAX_CARS_COUNT = 1000;
+
+    private final int PRICE_FOR_M2 = 2000;
+
+    private final double SQUARE_FOR_PERSON = 15;
+
+    private final int MAX_COUNT_OF_FLOORS = 163;
+
+    private final double MIN_SQUARE_OF_ROOM = 25;
 
 
+    public double getMIN_SQUARE_OF_ROOM() {
+        return MIN_SQUARE_OF_ROOM;
+    }
+
+    public int getPRICE_FOR_M2() {
+        return PRICE_FOR_M2;
+    }
+
+    public double getSQUARE_FOR_PERSON() {
+        return SQUARE_FOR_PERSON;
+    }
 
     public int getMAX_COUNT_OF_PEOPLE() {
         return MAX_COUNT_OF_PEOPLE;
@@ -101,6 +120,10 @@ public class ConstantsForRandomGeneration {
 
     public int getMAX_ELEVATOR_LOAD() {
         return MAX_ELEVATOR_LOAD;
+    }
+
+    public int getMAX_COUNT_OF_FLOORS() {
+        return MAX_COUNT_OF_FLOORS;
     }
 }
 

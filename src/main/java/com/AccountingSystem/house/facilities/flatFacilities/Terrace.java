@@ -3,10 +3,10 @@ package com.AccountingSystem.house.facilities.flatFacilities;
 public class Terrace {
     private double terraceSquare;
 
-    Terrace(){
+    public Terrace(){
         terraceSquare = 0;
     }
-    Terrace(double terraceSquare){
+    public Terrace(double terraceSquare){
         this.terraceSquare = terraceSquare;
     }
 

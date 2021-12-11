@@ -13,7 +13,7 @@ public class Flat {
     private Terrace terrace;
     private int numberOfFlat;
 
-    Flat() {
+    public Flat() {
         countOfHumans = 0;
         countOfRooms = 0;
         square = 0;

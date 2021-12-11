@@ -24,15 +24,23 @@ public class FlatBuilder {
     public void setPrice(double price){
         this.price = price;
     }
-    public void setSwimmingPool(double maxDepth, double volume){
-        this.swimmingPool.setMaxDepth(maxDepth);
-        this.swimmingPool.setVolume(volume);
+    public void setSwimmingPool(double maxDepth, double volume) {
+        this.swimmingPool = new SwimmingPool(maxDepth, volume);
     }
     public void setTerrace(double square){
-        this.terrace.setTerraceSquare(square);
+        this.terrace = new Terrace(square);
     }
     public void setNumberOfFlat(int numberOfFlat){
         this.numberOfFlat = numberOfFlat;
+    }
+    public void setZeros(){
+        this.countOfHumans = 0;
+        this.countOfRooms = 0;
+        this.square = 0;
+        this.price = 0;
+        this.numberOfFlat = 0;
+        this.swimmingPool = null;
+        this.terrace = null;
     }
     public Flat getFlat(){
         return new Flat(countOfHumans, countOfRooms, square, price, numberOfFlat, swimmingPool, terrace);

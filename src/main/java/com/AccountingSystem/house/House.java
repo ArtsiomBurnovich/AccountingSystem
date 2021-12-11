@@ -7,7 +7,6 @@ import java.util.List;
 
 public class House {
     private int countOfFloors;
-    private int countOfFlats;
     private int numberOfHouse;
     private Elevator elevator;
     private Parking parking;
@@ -15,7 +14,6 @@ public class House {
 
     House(){
         countOfFloors = 0;
-        countOfFlats = 0;
         numberOfHouse = 0;
         elevator = null;
         parking = null;
@@ -23,9 +21,8 @@ public class House {
     House(int numberOfHouse){
         numberOfHouse = numberOfHouse;
     }
-    public House(int countOfFloors, int countOfFlats, int numberOfHouse, Elevator elevator, Parking parking){
+    public House(int countOfFloors, int numberOfHouse, Elevator elevator, Parking parking){
         this.countOfFloors = countOfFloors;
-        this.countOfFlats = countOfFlats;
         this.numberOfHouse = numberOfHouse;
         this.elevator = elevator;
         this.parking = parking;
@@ -33,9 +30,6 @@ public class House {
 
     public int getCountOfFloors(){
         return countOfFloors;
-    }
-    public int getCountOfFlats(){
-        return countOfFlats;
     }
     public int getNumberOfHouse(){
         return numberOfHouse;
@@ -52,9 +46,6 @@ public class House {
 
     public void setNumberOfHouse(int newNumberOfHouse) {
         numberOfHouse = newNumberOfHouse;
-    }
-    public void setCountOfFlats(int newCountOfFlats){
-        countOfFlats = newCountOfFlats;
     }
     public void setParking(int maxCountOfCars){
         this.parking.setMaxCountOfCars(maxCountOfCars);

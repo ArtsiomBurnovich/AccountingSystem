@@ -44,8 +44,16 @@ public class FloorService {
     public static void printFloor(Floor o){
         for (int i = 0; i < o.getCountOfFlatsOnFloor(); i++)
         {
-            System.out.println("Flat: " + (i+1));
-            FlatService.printFlat(o.getFlat(i));
+            if(o.getFlat(i) == null){
+                System.out.println("###########################");
+                System.out.println("Flat: " + (i+1));
+                System.out.println("NO");
+            }
+            else{
+                System.out.println("###########################");
+                System.out.println("Flat: " + o.getFlat(i).getNumberOfFlat());
+                FlatService.printFlat(o.getFlat(i));
+            }
         }
     }
 }

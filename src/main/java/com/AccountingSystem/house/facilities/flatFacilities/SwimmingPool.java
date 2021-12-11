@@ -4,11 +4,11 @@ public class SwimmingPool {
     private double maxDepth;
     private double volume;
 
-    SwimmingPool(){
+    public SwimmingPool(){
         this.maxDepth = 0;
         this.volume = 0;
     }
-    SwimmingPool(double maxDepth, double volume){
+    public SwimmingPool(double maxDepth, double volume){
         this.volume = volume;
         this.maxDepth = maxDepth;
     }

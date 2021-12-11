@@ -13,7 +13,7 @@ public class AccountingSystem {
     public House getHouse(int index){
         return houses.get(index);
     }
-    public void deleteHouse(int index){
+    public void removeHouse(int index){
         houses.remove(index);
     }
     public int getCountOfHouses(){

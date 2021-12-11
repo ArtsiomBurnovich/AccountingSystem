@@ -3,10 +3,10 @@ package com.AccountingSystem.house.facilities.houseFacilities;
 public class Parking {
     private int maxCountOfCars;
 
-    Parking(){
+    public Parking(){
         this.maxCountOfCars = 0;
     }
-    Parking(int maxCountOfCars){
+    public Parking(int maxCountOfCars){
         this.maxCountOfCars = maxCountOfCars;
     }
 

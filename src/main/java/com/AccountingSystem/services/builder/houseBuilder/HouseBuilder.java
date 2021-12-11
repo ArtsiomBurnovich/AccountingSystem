@@ -5,33 +5,32 @@ import com.AccountingSystem.house.facilities.houseFacilities.*;
 
 public class HouseBuilder {
     private int countOfFloors = 0;
-    private int countOfFlats = 0;
     private int numberOfHouse = 0;
     private Elevator elevator = null;
     private Parking parking = null;
 
-    public void setCountOfFlats(int countOfFlats) {
-        this.countOfFlats = countOfFlats;
-    }
-
-    public void setCountOfFloors(int countOfFloors) {
-        this.countOfFloors = countOfFloors;
-    }
 
     public void setNumberOfHouse(int numberOfHouse) {
         this.numberOfHouse = numberOfHouse;
     }
 
     public void setElevator(int maxElevatorLoad, double elevatorSpeed) {
-        this.elevator.setElevatorSpeed(elevatorSpeed);
-        this.elevator.setMaxLoad(maxElevatorLoad);
+        this.elevator = new Elevator(elevatorSpeed, maxElevatorLoad);
     }
 
     public void setParking(int maxCountOfCars) {
-        this.parking.setMaxCountOfCars(maxCountOfCars);;
+
+        this.parking = new Parking(maxCountOfCars);
     }
 
     public House getHouse(){
-        return new House(countOfFloors, countOfFlats, numberOfHouse, elevator, parking);
+        return new House(countOfFloors, numberOfHouse, elevator, parking);
+    }
+
+    public void setZeros(){
+        this.countOfFloors = 0;
+        this.numberOfHouse = 0;
+        this.elevator = null;
+        this.parking = null;
     }
 }

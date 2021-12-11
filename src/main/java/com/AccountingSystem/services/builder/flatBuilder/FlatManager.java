@@ -5,22 +5,6 @@ import com.AccountingSystem.services.builder.ConstantsForRandomGeneration;
 import java.util.Random;
 
 public class FlatManager {
-    public Flat getFlatWithTerrace(FlatBuilder builder, int numberOfFlat, double squareOfTerrace){
-        builder.setNumberOfFlat(numberOfFlat);
-        builder.setTerrace(squareOfTerrace);
-        return builder.getFlat();
-    }
-    public Flat getFlatWithSwimmingPool(FlatBuilder builder, int numberOfFlat, double maxDepth, double volume){
-        builder.setNumberOfFlat(numberOfFlat);
-        builder.setSwimmingPool(maxDepth, volume);
-        return builder.getFlat();
-    }
-    public Flat getFlatWithTerraceAndSwimmingPool(FlatBuilder builder, int numberOfFlat, double squareOfTerrace, double maxDepth, double volume){
-        builder.setNumberOfFlat(numberOfFlat);
-        builder.setTerrace(squareOfTerrace);
-        builder.setSwimmingPool(maxDepth, volume);
-        return builder.getFlat();
-    }
     public Flat getSimpleFlat(FlatBuilder builder, int numberOfFlat){
         builder.setNumberOfFlat(numberOfFlat);
         return builder.getFlat();
@@ -49,6 +33,37 @@ public class FlatManager {
             builder.setTerrace(rand.nextDouble(maxTerraceSquare - minTerraceSquare) + minTerraceSquare);
         }
         builder.setNumberOfFlat(numberOfFlat);
+        return builder.getFlat();
+    }
+    public Flat getFlat(FlatBuilder builder, int numberOfFlat, double square){
+        Random rand = new Random();
+        ConstantsForRandomGeneration c = new ConstantsForRandomGeneration();
+        boolean flag;
+        double poolSquare = 0;
+        double terraceSquare = 0;
+        builder.setZeros();
+        builder.setNumberOfFlat(numberOfFlat);
+        builder.setSquare(square);
+        flag = rand.nextBoolean();
+        if(flag){
+            double maxPoolVolume = square * c.getMAX_POOL_POSSIBLE_VOLUME();
+            double minPoolVolume = square * c.getMIN_POOL_POSSIBLE_VOLUME();
+            double tempDepth = rand.nextDouble(c.getMAX_POOL_DEPTH() - c.getMIN_POOL_DEPTH()) + c.getMIN_POOL_DEPTH();
+            double tempVolume = rand.nextDouble(maxPoolVolume - minPoolVolume) + minPoolVolume;
+            builder.setSwimmingPool(tempDepth, tempVolume);
+            poolSquare = tempVolume/tempDepth;
+        }
+        flag = rand.nextBoolean();
+        if(flag){
+            double maxTerraceSquare = square * c.getMAX_TERRACE_POSSIBLE_SQUARE();
+            double minTerraceSquare = square * c.getMIN_TERRACE_POSSIBLE_SQUARE();
+            terraceSquare = rand.nextDouble(maxTerraceSquare - minTerraceSquare) + minTerraceSquare;
+            builder.setTerrace(terraceSquare);
+        }
+        builder.setCountOfHumans(rand.nextInt((int) (square/c.getSQUARE_FOR_PERSON())));
+        double Price = (square-poolSquare) * c.getPRICE_FOR_M2() + poolSquare*c.getPRICE_FOR_M2()*1.1; //Price of m2 of swimming pool = 1.1 PRICE_FOR_M2
+        builder.setPrice((int) Price);
+        builder.setCountOfRooms((int) (square/c.getMIN_SQUARE_OF_ROOM()));
         return builder.getFlat();
     }
 }

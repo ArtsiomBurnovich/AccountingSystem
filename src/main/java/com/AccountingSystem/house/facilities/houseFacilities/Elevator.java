@@ -8,7 +8,7 @@ public class Elevator {
         this.elevatorSpeed = 0;
         this.maxLoad = 0;
     }
-    Elevator(double elevatorSpeed, int maxLoad){
+    public Elevator(double elevatorSpeed, int maxLoad){
         this.elevatorSpeed = elevatorSpeed;
         this.maxLoad = maxLoad;
     }

@@ -17,9 +17,19 @@ public class FlatService {
         return o1.getSquare() - o2.getSquare();
     }
     public static void printFlat(Flat o){
-        System.out.println("Count Of Rooms" + o.getCountOfRooms() + "\nCount Oh Humans: " + o.getCountOfHumans()+
-                "\nSquare: " + o.getSquare() + "\nPrice: " + o.getPrice() +
-                "\nSwimming Pool (max depth(m), volume(m^3): " + o.getSwimmingPool().getMaxDepth() + ", " + o.getSwimmingPool().getVolume() +
-                "\nTerrace (square(m^2): " + o.getTerrace().getTerraceSquare());
+        System.out.println("Count Of Rooms: " + o.getCountOfRooms() + "\nCount Oh Humans: " + o.getCountOfHumans()+
+                "\nSquare: " + o.getSquare() + "\nPrice: " + o.getPrice());
+        if (o.getSwimmingPool() == null){
+            System.out.println("Swimming Pool (max depth(m), volume(m^3): NO");
+        }
+        else{
+            System.out.println("Swimming Pool (max depth(m), volume(m^3): " + o.getSwimmingPool().getMaxDepth() + ", " + o.getSwimmingPool().getVolume());
+        }
+        if(o.getTerrace() == null){
+            System.out.println("Terrace (square(m^2): NO");
+        }
+        else {
+            System.out.println("Terrace (square(m^2): " + o.getTerrace().getTerraceSquare());
+        }
     }
 }

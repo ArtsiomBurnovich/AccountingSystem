@@ -5,11 +5,11 @@ import com.AccountingSystem.services.builder.ConstantsForRandomGeneration;
 import java.util.Random;
 
 public class FlatManager {
-    public Flat getSimpleFlat(FlatBuilder builder, int numberOfFlat){
+    public static Flat getSimpleFlat(FlatBuilder builder, int numberOfFlat){
         builder.setNumberOfFlat(numberOfFlat);
         return builder.getFlat();
     }
-    public Flat getRandomFlat(FlatBuilder builder, int numberOfFlat){
+    public static Flat getRandomFlat(FlatBuilder builder, int numberOfFlat){
         Random rand = new Random();
         ConstantsForRandomGeneration c = new ConstantsForRandomGeneration();
 
@@ -26,16 +26,22 @@ public class FlatManager {
             double tempVolume = rand.nextDouble(maxPoolVolume - minPoolVolume) + minPoolVolume;
             builder.setSwimmingPool(tempDepth, tempVolume);
         }
+        else{
+            builder.setSwimmingPool(0,0);
+        }
         flag = rand.nextBoolean();
         if(flag){
             double maxTerraceSquare = tempSquare * c.getMAX_TERRACE_POSSIBLE_SQUARE();
             double minTerraceSquare = tempSquare * c.getMIN_TERRACE_POSSIBLE_SQUARE();
             builder.setTerrace(rand.nextDouble(maxTerraceSquare - minTerraceSquare) + minTerraceSquare);
         }
+        else{
+            builder.setTerrace(0);
+        }
         builder.setNumberOfFlat(numberOfFlat);
         return builder.getFlat();
     }
-    public Flat getFlat(FlatBuilder builder, int numberOfFlat, double square){
+    public static Flat getFlat(FlatBuilder builder, int numberOfFlat, double square){
         builder.setZeros();
         Random rand = new Random();
         ConstantsForRandomGeneration c = new ConstantsForRandomGeneration();
@@ -52,6 +58,8 @@ public class FlatManager {
             double tempVolume = rand.nextDouble(maxPoolVolume - minPoolVolume) + minPoolVolume;
             builder.setSwimmingPool(tempDepth, tempVolume);
             poolSquare = tempVolume/tempDepth;
+        } else {
+            builder.setSwimmingPool(0,0);
         }
         flag = rand.nextBoolean();
         if(flag){
@@ -59,6 +67,8 @@ public class FlatManager {
             double minTerraceSquare = square * c.getMIN_TERRACE_POSSIBLE_SQUARE();
             terraceSquare = rand.nextDouble(maxTerraceSquare - minTerraceSquare) + minTerraceSquare;
             builder.setTerrace(terraceSquare);
+        } else{
+            builder.setTerrace(0);
         }
         builder.setCountOfHumans(rand.nextInt((int) (square/c.getSQUARE_FOR_PERSON())));
         double Price = (square-poolSquare) * c.getPRICE_FOR_M2() + poolSquare*c.getPRICE_FOR_M2()*1.1; //Price of m2 of swimming pool = 1.1 PRICE_FOR_M2

@@ -19,7 +19,7 @@ public class HouseBuilder {
         }
         return houseBuilder;
     }
-
+    //---
 
     public void setNumberOfHouse(int numberOfHouse) {
         this.numberOfHouse = numberOfHouse;

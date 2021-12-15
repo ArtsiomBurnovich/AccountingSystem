@@ -23,7 +23,5 @@ public class Floor {
     public int getNumberOfFloor(){
         return numberOfFloor;
     }
-
-
 }
 

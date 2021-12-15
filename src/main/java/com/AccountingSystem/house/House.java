@@ -11,7 +11,7 @@ public class House {
     private Parking parking;
     private List<Floor> floors = new ArrayList<>();
 
-    House(){
+    public House(){
         countOfFloors = 0;
         numberOfHouse = 0;
         elevator = null;
@@ -28,7 +28,7 @@ public class House {
     }
 
     public int getCountOfFloors(){
-        return countOfFloors;
+        return floors.size();
     }
     public int getNumberOfHouse(){
         return numberOfHouse;
@@ -41,6 +41,10 @@ public class House {
     }
     public Floor getFloor(int index){
         return floors.get(index);
+    }
+    public Floor getFloorDescription(int index){
+        Floor tempFloor =  new Floor(floors.get(index).getNumberOfFloor());
+        return tempFloor;
     }
 
     public void setNumberOfHouse(int newNumberOfHouse) {
@@ -57,7 +61,4 @@ public class House {
         countOfFloors++;
         floors.add(new Floor(countOfFloors));
     }
-
-
-
 }

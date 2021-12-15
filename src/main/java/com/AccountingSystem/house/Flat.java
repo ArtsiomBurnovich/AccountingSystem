@@ -68,7 +68,16 @@ public class Flat {
     public void setSwimmingPool(SwimmingPool swimmingPool) {
         this.swimmingPool = swimmingPool;
     }
+    public void setSwimmingPool(double maxDepth, double volume){
+        this.swimmingPool = new SwimmingPool(maxDepth, volume);
+    }
     public void setTerrace(Terrace terrace) {
         this.terrace = terrace;
+    }
+    public void setTerrace (double terraceSquare){
+        this.terrace = new Terrace(terraceSquare);
+    }
+    public void setNumberOfFlat(int numberOfFlat){
+        this.numberOfFlat = numberOfFlat;
     }
 }

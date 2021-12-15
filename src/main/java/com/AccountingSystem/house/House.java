@@ -51,11 +51,10 @@ public class House {
         numberOfHouse = newNumberOfHouse;
     }
     public void setParking(int maxCountOfCars){
-        this.parking.setMaxCountOfCars(maxCountOfCars);
+        this.parking = new Parking(maxCountOfCars);
     }
-    public void setElevator(int elevatorSpeed, int maxElevatorLoad){
-        this.elevator.setElevatorSpeed(elevatorSpeed);
-        this.elevator.setMaxLoad(maxElevatorLoad);
+    public void setElevator(double elevatorSpeed, int maxElevatorLoad){
+        this.elevator = new Elevator(elevatorSpeed, maxElevatorLoad);
     }
     public void addFloor() {
         countOfFloors++;

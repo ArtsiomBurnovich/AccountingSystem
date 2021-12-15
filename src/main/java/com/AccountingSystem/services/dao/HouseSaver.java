@@ -1,8 +1,11 @@
 package com.AccountingSystem.services.dao;
 
+import com.AccountingSystem.house.Floor;
 import com.AccountingSystem.house.House;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HouseSaver extends DbConfigs{
     public static int saveHouse(House house){
@@ -29,4 +32,24 @@ public class HouseSaver extends DbConfigs{
         }
         return  houseID;
     }
+
+    public static House readHouseFromDb (int houseId){
+        House tempHouse = new House();
+        String floorSqlStr = "SELECT * FROM House WHERE idHouse = " + houseId + ";";
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(floorSqlStr);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                tempHouse.setNumberOfHouse(resultSet.getInt(2));
+                tempHouse.setElevator(resultSet.getDouble(4), resultSet.getInt(5));
+                tempHouse.setParking(resultSet.getInt(6));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tempHouse;
+    }
+
+
 }

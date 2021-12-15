@@ -7,7 +7,10 @@ public class Floor {
     private int numberOfFloor = 0;
     private List<Flat> flatsOnFloor = new ArrayList();
 
-    Floor(int newNumberOfFloor){
+    public Floor (){
+        numberOfFloor = 0;
+    }
+    public Floor(int newNumberOfFloor){
         numberOfFloor = newNumberOfFloor;
     }
 
@@ -22,6 +25,10 @@ public class Floor {
     }
     public int getNumberOfFloor(){
         return numberOfFloor;
+    }
+
+    public void setNumberOfFloor(int numberOfFloor){
+        this.numberOfFloor = numberOfFloor;
     }
 }
 

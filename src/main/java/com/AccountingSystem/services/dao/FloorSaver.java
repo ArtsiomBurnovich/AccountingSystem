@@ -1,8 +1,13 @@
 package com.AccountingSystem.services.dao;
 
+import com.AccountingSystem.house.Flat;
 import com.AccountingSystem.house.Floor;
 
+import javax.print.attribute.HashDocAttributeSet;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class FloorSaver extends DbConfigs{
     public static int saveFloor(Floor floor, int houseId){
@@ -25,4 +30,26 @@ public class FloorSaver extends DbConfigs{
         }
         return  floorID;
     }
+
+    public static HashMap<Integer, Floor> readFloorFromDb (int houseId){
+        HashMap <Integer, Floor> floors = new HashMap<>();
+        Floor tempFloor = new Floor();
+        String floorSqlStr = "SELECT * FROM Floor WHERE houseID = " + houseId + ";";
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(floorSqlStr);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Integer tempFloorId;
+            while (resultSet.next()){
+                tempFloorId = resultSet.getInt(1);
+                tempFloor.setNumberOfFloor(resultSet.getInt(3));
+                floors.put(tempFloorId, tempFloor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return floors;
+    }
+
 }
+

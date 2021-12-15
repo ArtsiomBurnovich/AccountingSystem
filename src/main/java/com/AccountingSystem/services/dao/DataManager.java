@@ -4,6 +4,8 @@ import com.AccountingSystem.house.Flat;
 import com.AccountingSystem.house.Floor;
 import com.AccountingSystem.house.House;
 
+import java.util.*;
+
 public class DataManager extends DbConfigs{
 
     //singleton
@@ -34,4 +36,24 @@ public class DataManager extends DbConfigs{
         }
     }
 
+    public static House readFromDb(int houseId){
+        House tempHouse = new House();
+        Floor tempFloor = new Floor();
+        Flat tempFlat = new Flat();
+        HouseSaver.readHouseFromDb(houseId);
+        HashMap<Integer, Floor> floors = FloorSaver.readFloorFromDb(houseId);
+        List<Flat> flats = new ArrayList<>();
+        int counter = 0;
+        for (Map.Entry<Integer, Floor> entry : floors.entrySet()) {
+            Integer key = entry.getKey();
+            tempHouse.addFloor();
+            flats = FlatSaver.readFlatFromDb((int)key);
+            for (int i = 0; i < flats.size(); i++)
+            {
+                tempHouse.getFloor(counter).addFlat(flats.get(i));
+            }
+            counter++;
+        }
+        return tempHouse;
+    }
 }

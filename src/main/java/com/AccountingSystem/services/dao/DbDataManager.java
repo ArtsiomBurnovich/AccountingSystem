@@ -6,42 +6,46 @@ import com.AccountingSystem.house.House;
 
 import java.util.*;
 
-public class DataManager extends DbConfigs{
+public class DbDataManager extends DbConfigs implements DAOIn{
 
     //singleton
-    public static DataManager dataManager;
-    private DataManager() {
+    public static DbDataManager dbDataManager;
+    private DbDataManager() {
     }
-    public static DataManager getAllSaver() {
-        if (dataManager == null) {
-            dataManager = new DataManager();
+    public static DbDataManager getDbDataManager() {
+        if (dbDataManager == null) {
+            dbDataManager = new DbDataManager();
         }
-        return dataManager;
+        return dbDataManager;
     }
 
 
-    public static void writeToDb(House house){
-        int houseId = HouseSaver.saveHouse(house);
+    @Override
+    public int insert(House o) {
+        //return Id of inserted class
+        int houseId = HouseSaver.saveHouse(o);
         int floorId;
         Flat tempFlat;
         Floor tempFloor;
-        for (int i = 0; i < house.getCountOfFloors(); i++)
+        for (int i = 0; i < o.getCountOfFloors(); i++)
         {
-          tempFloor = house.getFloor(i);
-          floorId = FloorSaver.saveFloor(tempFloor, houseId);
+            tempFloor = o.getFloor(i);
+            floorId = FloorSaver.saveFloor(tempFloor, houseId);
             for (int j = 0; j < tempFloor.getCountOfFlatsOnFloor(); j++){
                 tempFlat = tempFloor.getFlat(j);
                 FlatSaver.saveFlat(tempFlat, floorId);
             }
         }
+        return houseId;
     }
 
-    public static House readFromDb(int houseId){
+    @Override
+    public House getById(int Id) {
         House tempHouse = new House();
         Floor tempFloor = new Floor();
         Flat tempFlat = new Flat();
-        HouseSaver.readHouseFromDb(houseId);
-        HashMap<Integer, Floor> floors = FloorSaver.readFloorFromDb(houseId);
+        HouseSaver.readHouseFromDb(Id);
+        HashMap<Integer, Floor> floors = FloorSaver.readFloorFromDb(Id);
         List<Flat> flats = new ArrayList<>();
         int counter = 0;
         for (Map.Entry<Integer, Floor> entry : floors.entrySet()) {

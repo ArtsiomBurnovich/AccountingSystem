@@ -2,6 +2,9 @@ package com.AccountingSystem.services;
 
 import com.AccountingSystem.house.*;
 
+import java.io.Serializable;
+import java.util.Comparator;
+
 public class HouseService {
     public static int compareByNumber(House o1, House o2){
         return o1.getNumberOfHouse() - o2.getNumberOfHouse();
@@ -18,6 +21,10 @@ public class HouseService {
     public static int compareByCountOfFlats(House o1, House o2){
         return calculateFlats(o1) - calculateFlats(o2);
     }
+    public static boolean compareByHashCode(House o1, House o2){
+        return o1.hashCode() == o2.hashCode();
+    }
+
 
     public static int calculateHumans(House o){
         int temp = 0;

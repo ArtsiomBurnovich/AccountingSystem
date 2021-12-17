@@ -2,6 +2,8 @@ package com.AccountingSystem.house;
 
 import com.AccountingSystem.house.facilities.flatFacilities.*;
 
+import java.util.Objects;
+
 
 public class Flat {
     private int countOfHumans;
@@ -51,6 +53,19 @@ public class Flat {
     }
     public int getNumberOfFlat() {
         return numberOfFlat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flat flat = (Flat) o;
+        return countOfHumans == flat.countOfHumans && countOfRooms == flat.countOfRooms && Double.compare(flat.square, square) == 0 && Double.compare(flat.price, price) == 0 && numberOfFlat == flat.numberOfFlat && swimmingPool.equals(flat.swimmingPool) && terrace.equals(flat.terrace);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(countOfHumans, countOfRooms, square, price, swimmingPool, terrace, numberOfFlat);
     }
 
     public void setCountOfHumans(int newCountOfHumans) {

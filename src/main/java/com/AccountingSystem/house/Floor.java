@@ -1,6 +1,7 @@
 package com.AccountingSystem.house;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Floor {
@@ -25,6 +26,19 @@ public class Floor {
     }
     public int getNumberOfFloor(){
         return numberOfFloor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Floor floor = (Floor) o;
+        return numberOfFloor == floor.numberOfFloor && flatsOnFloor.equals(floor.flatsOnFloor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberOfFloor, flatsOnFloor);
     }
 
     public void setNumberOfFloor(int numberOfFloor){

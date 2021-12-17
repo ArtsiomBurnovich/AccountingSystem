@@ -3,6 +3,7 @@ package com.AccountingSystem.house;
 import com.AccountingSystem.house.facilities.houseFacilities.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class House {
     private int countOfFloors;
@@ -45,6 +46,19 @@ public class House {
     public Floor getFloorDescription(int index){
         Floor tempFloor =  new Floor(floors.get(index).getNumberOfFloor());
         return tempFloor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        House house = (House) o;
+        return countOfFloors == house.countOfFloors && numberOfHouse == house.numberOfHouse && elevator.equals(house.elevator) && parking.equals(house.parking) && floors.equals(house.floors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(countOfFloors, numberOfHouse, elevator, parking, floors);
     }
 
     public void setNumberOfHouse(int newNumberOfHouse) {

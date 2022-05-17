@@ -1,13 +1,11 @@
-package com.AccountingSystem.Test;
+package com.AccountingSystem.test;
 
 import com.AccountingSystem.house.House;
-import com.AccountingSystem.services.HouseService;
 import com.AccountingSystem.services.builder.flatBuilder.FlatBuilder;
 import com.AccountingSystem.services.builder.houseBuilder.HouseBuilder;
 import com.AccountingSystem.services.builder.houseBuilder.HouseManager;
 import com.AccountingSystem.services.dao.DAOIn;
 import com.AccountingSystem.services.dao.DbDataManager;
-import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.*;
 

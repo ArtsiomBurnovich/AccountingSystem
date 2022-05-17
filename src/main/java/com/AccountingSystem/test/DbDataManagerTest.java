@@ -14,7 +14,7 @@ class DbDataManagerTest {
 
     @org.junit.jupiter.api.Test
     void getById() {
-        House expected = HouseManager.getRandomHouse(HouseBuilder.getHouseBuilder(), FlatBuilder.getFlatBuilder(), 1, 2, 4, 100);
+        House expected = HouseManager.getRandomHouse(1, 2, 4, 100);
         DAOIn db = DbDataManager.getDbDataManager();
         int lastId = db.insert(expected);
         House actual = db.getById(lastId);

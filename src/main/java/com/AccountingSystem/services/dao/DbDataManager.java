@@ -44,7 +44,7 @@ public class DbDataManager extends DbConfigs implements DAOIn{
         House tempHouse = new House();
         Floor tempFloor = new Floor();
         Flat tempFlat = new Flat();
-        HouseSaver.readHouseFromDb(Id);
+        tempHouse = HouseSaver.readHouseFromDb(Id);
         HashMap<Integer, Floor> floors = FloorSaver.readFloorFromDb(Id);
         List<Flat> flats = new ArrayList<>();
         int counter = 0;

@@ -13,7 +13,9 @@ public class HouseManager {
         return houseBuilder.getHouse();
     }
 
-    public static House getRandomHouse(HouseBuilder houseBuilder, FlatBuilder flatBuilder, int numberOfHouse, int countOfFloors, int countOfFlats, double averageSquareOfFlats) {
+    public static House getRandomHouse(int numberOfHouse, int countOfFloors, int countOfFlats, double averageSquareOfFlats) {
+        HouseBuilder houseBuilder = HouseBuilder.getHouseBuilder();
+        FlatBuilder flatBuilder = FlatBuilder.getFlatBuilder();
         houseBuilder.setZeros();
         houseBuilder.setNumberOfHouse(numberOfHouse);
         Random rand = new Random();
@@ -46,7 +48,7 @@ public class HouseManager {
         for (int j = 0; j < countOfFloors; j++) {
 
             if (j >= countOfFloors - extraFlats) {                //for extra flats
-                house.getFloor(j).addFlat(flatManager.getFlat(flatBuilder, tempCounter, averageSquareOfFlats));
+                house.getFloor(j).addFlat(flatManager.getFlat(tempCounter, averageSquareOfFlats));
                 tempCountOfFlats++;
                 tempCounter++;
             }
@@ -60,7 +62,7 @@ public class HouseManager {
                 } else {
                     tempSquare = averageSquareOfFlats - deltaSquare;
                 }
-                house.getFloor(j).addFlat(flatManager.getFlat(flatBuilder, tempCounter, tempSquare));
+                house.getFloor(j).addFlat(flatManager.getFlat(tempCounter, tempSquare));
                 tempCountOfFlats++;
                 tempCounter++;
             }
